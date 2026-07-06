@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCTiX — 現場に、もう一人の知能を。</title>
+<link rel="icon" type="image/png" href="octix-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0A0F1C;
+    --bg-panel:#101828;
+    --bg-panel-2:#151F30;
+    --ink:#E9F2EF;
+    --ink-dim:#8FA3AC;
+    --teal:#3FE8C4;
+    --coral:#FF7A59;
+    --line: rgba(255,255,255,0.08);
+    --maxw: 1080px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:400;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px;
+    height:1px;
+    background:var(--teal);
+    display:inline-block;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,15,28,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{width:32px; height:32px; flex-shrink:0; border-radius:8px; object-fit:cover;}
+  .brand-name{
+    font-family:'Shippori Mincho', serif;
+    font-size:19px;
+    letter-spacing:0.06em;
+  }
+  nav{display:flex; gap:28px;}
+  nav a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--ink-dim);
+    letter-spacing:0.05em;
+    transition:color .2s ease;
+  }
+  nav a:hover{color:var(--teal);}
+  @media(max-width:640px){ nav{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:center;
+    overflow:hidden;
+    padding:120px 0 80px;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(60% 50% at 15% 20%, rgba(63,232,196,0.16), transparent 60%),
+      radial-gradient(50% 45% at 85% 15%, rgba(255,122,89,0.13), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, rgba(63,232,196,0.10), transparent 65%);
+    background-size:180% 180%;
+    animation:camouflage 26s ease-in-out infinite;
+  }
+  @keyframes camouflage{
+    0%{background-position:0% 0%, 100% 0%, 50% 100%;}
+    50%{background-position:30% 40%, 60% 30%, 40% 70%;}
+    100%{background-position:0% 0%, 100% 0%, 50% 100%;}
+  }
+  .hero-content{position:relative; z-index:1;}
+  .hero .eyebrow{margin-bottom:26px;}
+  .hero h1{
+    font-size:clamp(34px, 6vw, 64px);
+    line-height:1.35;
+    margin-bottom:26px;
+  }
+  .hero p.lead{
+    font-size:16px;
+    color:var(--ink-dim);
+    max-width:520px;
+    margin-bottom:40px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding:14px 22px;
+    border-radius:2px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{
+    background:var(--teal);
+    color:#08110E;
+    font-weight:700;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal);}
+
+  /* ---------- Sections generic ---------- */
+  section.block{padding:120px 0;}
+  section.block.alt{background:var(--bg-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .block h2{
+    font-size:clamp(26px, 4vw, 38px);
+    margin:20px 0 26px;
+  }
+  .block .lead{
+    color:var(--ink-dim);
+    font-size:15px;
+    max-width:640px;
+  }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  /* ---------- Platform arms ---------- */
+  .arms{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    margin-top:56px;
+    border:1px solid var(--line);
+  }
+  @media(max-width:800px){ .arms{grid-template-columns:1fr;} }
+  .arm{
+    background:var(--bg-panel-2);
+    padding:36px 30px;
+  }
+  .arm .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--coral);
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:18px;
+  }
+  .arm h3{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    margin-bottom:12px;
+  }
+  .arm p{
+    font-size:13.5px;
+    color:var(--ink-dim);
+    line-height:1.8;
+  }
+
+  /* ---------- Status ---------- */
+  .status-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--coral);
+    border:1px solid rgba(255,122,89,0.35);
+    padding:5px 12px;
+    border-radius:2px;
+    margin-bottom:24px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:30px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:50px 0;
+    border-top:1px solid var(--line);
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .footer-inner .brand-name{font-size:15px;}
+  footer .meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--ink-dim);
+    display:flex; gap:20px;
+  }
+  footer .meta a:hover{color:var(--teal);}
+
+  :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{animation:none;}
+    .reveal{transition:none; opacity:1; transform:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="octix-logo.png" alt="OCTiX" class="brand-mark">
+      <span class="brand-name">OCTiX</span>
+    </div>
+    <nav>
+      <a href="#mission">ミッション</a>
+      <a href="#platform">プラットフォーム</a>
+      <a href="#status">現在地</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">AI × 製造現場</span>
+    <h1>現場に、<br>もう一人の知能を。</h1>
+    <p class="lead">受託ではなく、プロダクトをつくる。日本の製造現場で培った知見を、世界でも使えるAIツールに変えていく。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://note.com/" target="_blank" rel="noopener">開発の記録を追う →</a>
+      <a class="btn btn-ghost" href="#contact">問い合わせる</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="mission">
+  <div class="wrap reveal">
+    <span class="eyebrow">なぜプロダクトか</span>
+    <h2>時間を売るのを、やめる。</h2>
+    <p class="lead">受託開発は、時間と人数の分だけしか売上が伸びない。ひとつ作って、何度でも届けられるものには上限がない。OCTiXは、工場の現場で磨いてきた課題解決の勘所を、ソフトウェアという形に変えていく。</p>
+  </div>
+</section>
+
+<section class="block alt" id="platform">
+  <div class="wrap reveal">
+    <span class="eyebrow">OCTiX Platform</span>
+    <h2>タコには、8本の腕がある。</h2>
+    <p class="lead">OCTiXも同じ発想でつくる。ひとつの基盤に、必要な腕（機能）を後から増やしていく。まず動かすのは、最初の3本。</p>
+    <div class="arms">
+      <div class="arm">
+        <span class="num">腕 01</span>
+        <h3>基盤エージェント</h3>
+        <p>社員を一人雇う代わりに、現場の定型業務を任せられるAIの土台。</p>
+      </div>
+      <div class="arm">
+        <span class="num">腕 02</span>
+        <h3>拡張機能</h3>
+        <p>現場ごとに必要な機能だけを、あとから追加していく。</p>
+      </div>
+      <div class="arm">
+        <span class="num">腕 03</span>
+        <h3>月額利用</h3>
+        <p>初期投資を抑え、使った分だけ月ごとに払う仕組み。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="status">
+  <div class="wrap reveal">
+    <span class="status-tag">開発中 / EARLY STAGE</span>
+    <h2>まだ、育っている途中。</h2>
+    <p class="lead">OCTiXは開発の初期段階にある。まずひとつの小さな機能を仕上げ、実際の現場で使ってもらうところから始めている。進捗はnoteで公開している。</p>
+  </div>
+</section>
+
+<section class="block alt" id="contact">
+  <div class="wrap reveal contact-inner">
+    <div>
+      <span class="eyebrow">お問い合わせ</span>
+      <h2>話してみたい人へ。</h2>
+      <p class="lead">現場の課題や、一緒に検証してくれる工場を探しています。気軽に連絡してください。</p>
+    </div>
+    <a class="btn btn-primary" href="mailto:hello@octix.jp">メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="brand-name">OCTiX</span>
+    <div class="meta">
+      <span>© 2026 OCTiX</span>
+      <a href="https://note.com/" target="_blank" rel="noopener">note</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-visible'); }
+    });
+  }, {threshold:0.15});
+  items.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
