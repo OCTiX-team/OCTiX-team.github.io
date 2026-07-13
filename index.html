@@ -267,13 +267,38 @@
 <header>
   <div class="header-inner">
     <div class="brand">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="16" r="8" fill="#3FE8C4"/>
-        <path d="M12 20 C8 26, 6 30, 4 36" stroke="#3FE8C4" stroke-width="1.4" fill="none" opacity="0.8"/>
-        <path d="M15 22 C12 28, 11 32, 10 37" stroke="#3FE8C4" stroke-width="1.4" fill="none" opacity="0.8"/>
-        <path d="M20 23 C20 29, 20 33, 20 38" stroke="#3FE8C4" stroke-width="1.4" fill="none" opacity="0.8"/>
-        <path d="M25 22 C28 28, 29 32, 30 37" stroke="#3FE8C4" stroke-width="1.4" fill="none" opacity="0.8"/>
-        <path d="M28 20 C32 26, 34 30, 36 36" stroke="#3FE8C4" stroke-width="1.4" fill="none" opacity="0.8"/>
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="octoHead" x1="12" y1="8" x2="36" y2="34" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#6FF7DA"/>
+            <stop offset="0.55" stop-color="#3FE8C4"/>
+            <stop offset="1" stop-color="#22B9C9"/>
+          </linearGradient>
+          <linearGradient id="octoArm" x1="24" y1="26" x2="24" y2="46" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3FE8C4"/>
+            <stop offset="1" stop-color="#1E9FB8" stop-opacity="0.35"/>
+          </linearGradient>
+          <filter id="octoGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.4" flood-color="#3FE8C4" flood-opacity="0.55"/>
+          </filter>
+        </defs>
+        <g filter="url(#octoGlow)">
+          <!-- tentacles -->
+          <g stroke="url(#octoArm)" stroke-width="2" stroke-linecap="round" fill="none">
+            <path d="M13 27 C9 32, 7 37, 9 43"/>
+            <path d="M17 30 C14 35, 13 40, 15 45"/>
+            <path d="M24 31 C24 36, 24 41, 24 46"/>
+            <path d="M31 30 C34 35, 35 40, 33 45"/>
+            <path d="M35 27 C39 32, 41 37, 39 43"/>
+          </g>
+          <!-- head / mantle -->
+          <path d="M24 6 C33 6, 39 13, 39 22 C39 28, 35 31, 30 31 L18 31 C13 31, 9 28, 9 22 C9 13, 15 6, 24 6 Z" fill="url(#octoHead)"/>
+          <!-- eyes -->
+          <ellipse cx="19" cy="20" rx="3.1" ry="3.6" fill="#0A0F1C"/>
+          <ellipse cx="29" cy="20" rx="3.1" ry="3.6" fill="#0A0F1C"/>
+          <circle cx="20.1" cy="18.7" r="1.05" fill="#E9F2EF"/>
+          <circle cx="30.1" cy="18.7" r="1.05" fill="#E9F2EF"/>
+        </g>
       </svg>
       <span class="brand-name">OCTiX</span>
     </div>
